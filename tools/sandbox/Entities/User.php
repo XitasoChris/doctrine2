@@ -17,6 +17,11 @@ class User
      * @JoinColumn(name="address_id", referencedColumnName="id")
      */
     private $address;
+    
+    /**
+     * @Column(type="date")
+     */
+    private $lastLoggedIn;
 
     public function getId()
     {
@@ -44,5 +49,13 @@ class User
             $this->address = $address;
             $address->setUser($this);
         }
+    }
+    
+    public function setLastLoggedIn(\DateTime $datetime) {
+        $this->lastLoggedIn = $datetime;
+    }
+    
+    public function getLastLoggedIn() {
+        return $this->lastLoggedIn;
     }
 }
